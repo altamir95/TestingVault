@@ -1,30 +1,30 @@
 # TestingVault
 
-Для начала щапускаем команду для поддержки vault
-docker pull vault
+Для начала щапускаем команду `docker pull vault` для поддержки vault.
 
-Создаем контейнер с Vault
-docker run --name vault -p 8200:8200 vault:latest
-Результатом команды в консоли будет выведен следующая команда
+Создаем контейнер с Vault командой `docker run --name vault -p 8200:8200 vault:latest`.
 
-You may need to set the following environment variable:
+Результатом команды в консоли будет выведено следющее:
+> You may need to set the following environment variable:
+> 
+>     $ export VAULT_ADDR='http://0.0.0.0:8200'
+> 
+> The unseal key and root token are displayed below in case you want to
+> seal/unseal the Vault or re-authenticate.
+> 
+> Unseal Key: TkSC74J0vzClvql9IEUJwdHvtyL+gLybyWWk0DWQ7zU=
+> Root Token: hvs.pbqnPGi3Y5I44FK4rlGAZxCF
+> 
+> Development mode should NOT be used in production installations!
 
-    $ export VAULT_ADDR='http://0.0.0.0:8200'
+Скопируйте токен из RootToken и перенести в [appsittegs.json](https://github.com/altamir95/TestingVault/blob/main/TestingVault/TestingVault/appsettings.json) полю `VaultToken`.
 
-The unseal key and root token are displayed below in case you want to
-seal/unseal the Vault or re-authenticate.
+**В терминале контейнера** который мы создали ранее запускаем команду `export VAULT_ADDR='http://0.0.0.0:8200'`.
 
-Unseal Key: TkSC74J0vzClvql9IEUJwdHvtyL+gLybyWWk0DWQ7zU=
-Root Token: hvs.pbqnPGi3Y5I44FK4rlGAZxCF
+Так же **в терминале контейнера** вводим коменду `export VAULT_TOKEN='токен из RootToken'` для того что бы не логиниться в терминале докер контейнер.
 
-Development mode should NOT be used in production installations!
+Далее в терминал докер крейсера введите команду `Vault kv put secret/tdc tdcpassword=test1234` для создания секретного ключа.
 
-Скопируйте токен из RootToken и перенести в appsittegs.json полю vault token
-Так же запустите команду export VAULT_ADDR='http://0.0.0.0:8200' но в терминале контейнера который мы создали ранее
-Так же введите коменлу export VAULT_TOKEN='токен из RootToken' для того чо бы не логиниться в теминаое докер контейнер
 
-Далее в терминал докер крейсера введите команду для создания секретного ключа
-
-Vault kv put secret/tdc tdcpassword=test1234
 
 
