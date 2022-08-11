@@ -13,6 +13,7 @@
 > seal/unseal the Vault or re-authenticate.
 > 
 > Unseal Key: TkSC74J0vzClvql9IEUJwdHvtyL+gLybyWWk0DWQ7zU=
+> 
 > Root Token: hvs.pbqnPGi3Y5I44FK4rlGAZxCF
 > 
 > Development mode should NOT be used in production installations!
